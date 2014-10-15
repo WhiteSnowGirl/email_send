@@ -1,0 +1,108 @@
+body{
+	/*background:url(img/3.jpg)  no-repeat;*/
+	background:url(img/bg.gif);
+	font-family: "Microsoft YaHei";
+	margin:0;
+}
+h1{
+	text-shadow: 0 0 3px #201B1B;
+color: #535353;
+}
+
+.title { font-family: 'ËÎÌå'; font-size: 13px; line-height: 150% ; color: #FFFFFF;}
+.main{
+	width: 550px;
+	height: 200px;
+	margin: 0 auto;
+	margin-top: 40px;
+	border: 2px solid #dedede;
+	box-shadow: 0 0 20px #888;
+	border-radius: 5px;
+	position: relative;
+}
+.u-file-btn input{
+	cursor: pointer; 
+	text-align: right; 
+	z-index:10;
+	top:0px; 
+	right:0px; 
+	opacity:0.5; 
+	filter:alpha(opacity=50);
+	}
+.div1{
+	float: left;
+	height: 47px;
+	width: 214px;
+	margin-left: 165px;
+	margin-top: 30px;
+	position: absolute;
+	color: #112F64;
+	border: 1px dashed #112F64;
+}
+.div2{
+text-align:center;
+padding-top:12px;
+font-size:15px;
+font-weight:800
+}
+.inputstyle{
+    width: 144px;
+    height: 41px;
+    cursor: pointer;
+    font-size: 30px;
+    outline: medium none;
+    position: absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    opacity:0; 
+    left:0px;
+    top: 0px;
+}
+.tijiao{
+	display: block;
+	width: 75px;
+	height: 35px;
+	line-height: 35px;
+	color: #fff;
+	background: #5079C2;
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px;
+	
+	position: absolute;
+	right: 232px;
+	top: 130px;
+	border: 1px solid #5079C2;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+.tijiao:hover{
+	background:#4B6EAD;
+}
+.waiting{
+	position: absolute;
+	top: 239px;
+	left: 50%;
+	margin-left: -90px;
+	color: #000;
+}
+.sucess{
+	position: absolute;
+	top: 239px;
+	left: 50%;
+	margin-left: -90px;
+	color: #2B8F04;
+}
+.unread{
+	position: absolute;
+	top: 239px;
+	left: 50%;
+	margin-left: -73px;
+	color: #9B0C0C;
+}
+.filename{
+	position: absolute;
+	top: 64px;
+	left: 50%;
+	margin-left: -28px;
+	color: #000;
+}
