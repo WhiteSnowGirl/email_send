@@ -15,12 +15,12 @@
 
   	
   	<div class="div1">
-	    <div class="div2">ÉÏ´«ÎÄ¼ş</div>
+	    <div class="div2">ä¸Šä¼ æ–‡ä»¶</div>
 	    <input name="file" type="file" class="inputstyle" id="file"/> 
 	    
 	    <div class="filename"></div>
 	</div>
-  	<input class="tijiao" type="submit" name="Submit" value="Ìá½»" />  
+  	<input class="tijiao" type="submit" name="Submit" value="æäº¤" />  
  
 </form> 
 </div>
@@ -31,14 +31,14 @@ $(document).ready(function(){
 	$('.unread').fadeOut(2000);
 	$('#file').change(function(){
 		var name =$('#file').val();
-		var arr=name.split('\\');//×¢split¿ÉÒÔÓÃ×Ö·û»ò×Ö·û´®·Ö¸î 
+		var arr=name.split('\\');//æ³¨splitå¯ä»¥ç”¨å­—ç¬¦æˆ–å­—ç¬¦ä¸²åˆ†å‰² 
 		var name=arr[arr.length-1];
 		$('.filename').html(name);
 	});
 	
 	
-	// var arr=name.split('\\');//×¢split¿ÉÒÔÓÃ×Ö·û»ò×Ö·û´®·Ö¸î 
-	// var my=arr[arr.length-1];//Õâ¾ÍÊÇÒªÈ¡µÃµÄÍ¼Æ¬Ãû³Æ 
+	// var arr=name.split('\\');//æ³¨splitå¯ä»¥ç”¨å­—ç¬¦æˆ–å­—ç¬¦ä¸²åˆ†å‰² 
+	// var my=arr[arr.length-1];//è¿™å°±æ˜¯è¦å–å¾—çš„å›¾ç‰‡åç§° 
 	// alert(my);
 });
 </script>
@@ -47,31 +47,31 @@ $(document).ready(function(){
 <?php
 error_reporting(E_STRICT);
 date_default_timezone_set('Asia/Shanghai');
-// ÇëÇó PHPmailerÀà ÎÄ¼ş
+// è¯·æ±‚ PHPmailerç±» æ–‡ä»¶
 require_once("class.phpmailer.php");
 require_once 'reader.php';    
 $data = new Spreadsheet_Excel_Reader();   
 $data->setOutputEncoding('gbk');  
-//·¢ËÍEmailº¯Êı
+//å‘é€Emailå‡½æ•°
 function smtp_mail ( $sendto_email, $subject, $body, $extra_hdrs, $user_name) {
 $mail = new PHPMailer(); 
 $mail->IsSMTP(); // send via SMTP 
 $mail->Host = "smtp.163.com";   // SMTP servers 
 $mail->SMTPAuth = true; // turn on SMTP authentication 
-$mail->Username = "zzjing1224@163.com";  // SMTP username ×¢Òâ£ºÆÕÍ¨ÓÊ¼şÈÏÖ¤²»ĞèÒª¼Ó @ÓòÃû
-$mail->Password = "jing1224"; // SMTP password
+$mail->Username = "zz@163.com";  // SMTP username æ³¨æ„ï¼šæ™®é€šé‚®ä»¶è®¤è¯ä¸éœ€è¦åŠ  @åŸŸå
+$mail->Password = "123456"; // SMTP password
 
-$mail->From = "zzjing1224@163.com";  // ·¢¼şÈËÓÊÏä
-$mail->FromName = ÈËÊÂĞĞÕş×Ü¼à; //   ·¢¼şÈË ,Ãû³Æ
-$mail->CharSet = "GB2312";  // ÕâÀïÖ¸¶¨×Ö·û¼¯£¡
+$mail->From = "zz@163.com";  // å‘ä»¶äººé‚®ç®±
+$mail->FromName = äººäº‹è¡Œæ”¿æ€»ç›‘; //   å‘ä»¶äºº ,åç§°
+$mail->CharSet = "GB2312";  // è¿™é‡ŒæŒ‡å®šå­—ç¬¦é›†ï¼
 $mail->Encoding = "base64";
 
-$mail->AddAddress($sendto_email,$user_name);// ÊÕ¼şÈËÓÊÏäºÍĞÕÃû
+$mail->AddAddress($sendto_email,$user_name);// æ”¶ä»¶äººé‚®ç®±å’Œå§“å
 $mail->AddReplyTo("","jingjing_test");
 
 //$mail->WordWrap = 50; // set word wrap 
-//$mail->AddAttachment("/var/tmp/file.tar.gz");// attachment  ¸½¼ş1
-//$mail->AddAttachment("/tmp/image.jpg", "new.jpg"); //¸½¼ş2
+//$mail->AddAttachment("/var/tmp/file.tar.gz");// attachment  é™„ä»¶1
+//$mail->AddAttachment("/tmp/image.jpg", "new.jpg"); //é™„ä»¶2
 $mail->IsHTML(true);   // send as HTML 
 $mail->Subject = $subject;  
 $mail->Body = $body;
@@ -79,15 +79,15 @@ $mail->AltBody ="text/html";
 $date= date('Y-m-d H:i:s');
 if($mail->Send()) 
 { 
-   info_write("ok.txt","$user_name ·¢ËÍ³É¹¦ $date");
+   info_write("ok.txt","$user_name å‘é€æˆåŠŸ $date");
 } 
 else {
-   info_write("falied.txt","$user_name Ê§°Ü,´íÎóĞÅÏ¢$mail->ErrorInfo  $date");
+   info_write("falied.txt","$user_name å¤±è´¥,é”™è¯¯ä¿¡æ¯$mail->ErrorInfo  $date");
  }
 }
-// ·¢ËÍEmailº¯Êı½áÊø
+// å‘é€Emailå‡½æ•°ç»“æŸ
 
-// Ğ´Èë·¢ËÍ½á¹ûº¯Êı£¬´íÎóÈÕÖ¾¼ÇÂ¼
+// å†™å…¥å‘é€ç»“æœå‡½æ•°ï¼Œé”™è¯¯æ—¥å¿—è®°å½•
 function info_write($filename,$info_log)
 {
  $info.= $info_log;
@@ -97,7 +97,7 @@ function info_write($filename,$info_log)
  fclose($fp);
 }
 
-//¶¨Ê±Ìø×ªÒ³Ãæ º¯ÊıÆäÖĞ 1000ÊÇÊ±¼ä,1Ãë, Äú¿ÉÒÔ×Ô¶¨Òå
+//å®šæ—¶è·³è½¬é¡µé¢ å‡½æ•°å…¶ä¸­ 1000æ˜¯æ—¶é—´,1ç§’, æ‚¨å¯ä»¥è‡ªå®šä¹‰
 function redirect($url)
 {
 echo "<script>
@@ -109,57 +109,57 @@ window.setTimeout('redirect();', 1000);
   </script>";
 }
 
-//¶ÁÈ¡ÎÄ±¾ ÓÊ¼şµØÖ·  ÄúÒ²¿ÉÒÔ¶Á Êı¾İ¿â
+//è¯»å–æ–‡æœ¬ é‚®ä»¶åœ°å€  æ‚¨ä¹Ÿå¯ä»¥è¯» æ•°æ®åº“
 /*$filename = "email.txt";
 $fp = fopen($filename,"r");
 $contents = fread($fp,filesize($filename));
 $list_email=explode("\r\n",$contents); 
 $len=count($list_email);
 fclose($fp);*/
-// ²ÎÊıËµÃ÷(·¢ËÍµ½, ÓÊ¼şÖ÷Ìâ, ÓÊ¼şÄÚÈİ, ¸½¼ÓĞÅÏ¢, ÓÃ»§Ãû)
+// å‚æ•°è¯´æ˜(å‘é€åˆ°, é‚®ä»¶ä¸»é¢˜, é‚®ä»¶å†…å®¹, é™„åŠ ä¿¡æ¯, ç”¨æˆ·å)
 $i = $_GET['action']; 
 if($_POST['Submit'])  
 { 
 $data->read($_POST['file']);  
 for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
-$list_email=$data->sheets[0]['cells'][$i][1]; //ÓÊÏäµØÖ·
-$company_name=$data->sheets[0]['cells'][$i][2];//¹«Ë¾Ãû³Æ
-$department=$data->sheets[0]['cells'][$i][3];//Ò»¼¶²¿ÃÅ
-$job_num=$data->sheets[0]['cells'][$i][4];//¹¤ºÅ
-$name=$data->sheets[0]['cells'][$i][5];//Ô±¹¤ĞÕÃû
-$work_allday=$data->sheets[0]['cells'][$i][6];//Ó¦³öÇÚ
-$work_realday=$data->sheets[0]['cells'][$i][7];//Êµ³öÇÚ
-$business_travel=$data->sheets[0]['cells'][$i][8];//³ö²î
-$private_leave =$data->sheets[0]['cells'][$i][9];//ÊÂ¼Ù
-$sick_leave=$data->sheets[0]['cells'][$i][10];//²¡¼Ù
-$marital_leave=$data->sheets[0]['cells'][$i][11];//»é¼Ù
-$maternity_leave=$data->sheets[0]['cells'][$i][12];//²ú¼Ù
-$maternity_leave_company=$data->sheets[0]['cells'][$i][13];//Åã²ú¼Ù
-$jbereavement_leave=$data->sheets[0]['cells'][$i][14];//É¥¼Ù
-$annual_leave=$data->sheets[0]['cells'][$i][15];//ÄêĞİ¼Ù
-$statutory_holidays=$data->sheets[0]['cells'][$i][16];//·¨¶¨½Ú¼ÙÈÕ
-$statutory_holiday_overtime=$data->sheets[0]['cells'][$i][17];//·¨¶¨½Ú¼ÙÈÕ¼Ó°à
-$weekend_overtime=$data->sheets[0]['cells'][$i][18];//ÖÜÄ©¼Ó°à
-$working_overtime=$data->sheets[0]['cells'][$i][19];//¹¤×÷ÈÕ¼Ó°à
-$be_on_duty=$data->sheets[0]['cells'][$i][20];//Öµ°à
-$neglect_work=$data->sheets[0]['cells'][$i][21];//¿õ¹¤
-$wage=$data->sheets[0]['cells'][$i][22];//¹¤×Ê±ê×¼
-$attendance_standards=$data->sheets[0]['cells'][$i][23];//³öÇÚ¹¤×Ê
-$overtime_wages=$data->sheets[0]['cells'][$i][24];//¼Ó°à¹¤×Ê
-$meal_supplement=$data->sheets[0]['cells'][$i][25];//²ÍÌù
-$bonus=$data->sheets[0]['cells'][$i][26];//½±½ğ
-$commission=$data->sheets[0]['cells'][$i][27];//Ìá³É
-$additional=$data->sheets[0]['cells'][$i][28];//Õı²¹Ïî
-$negative_buckle=$data->sheets[0]['cells'][$i][29];//¸º¿ÛÏî
-$should_pay=$data->sheets[0]['cells'][$i][30];//Ó¦·¢¹¤×Ê
-$social_security_withholding=$data->sheets[0]['cells'][$i][31];//Éç±£´ú¿Û
-$fund=$data->sheets[0]['cells'][$i][32];//¹«»ı½ğ´ú¿Û
-$salary_payable=$data->sheets[0]['cells'][$i][33];//Ó¦¸¶¹¤×Ê
-$individual_income_tax=$data->sheets[0]['cells'][$i][34];//¸öÈËËùµÃË°
-$real_wages=$data->sheets[0]['cells'][$i][35];//Êµ·¢¹¤×Ê
-$secrecy_salary=$data->sheets[0]['cells'][$i][36];//±£ÃÜ¹¤×Ê
-$provident_fund_subsidies=$data->sheets[0]['cells'][$i][37];//¹«»ı½ğ²¹Ìù
-$clock_real_hair=$data->sheets[0]['cells'][$i][38];//´ò¿¨Êµ·¢
+$list_email=$data->sheets[0]['cells'][$i][1]; //é‚®ç®±åœ°å€
+$company_name=$data->sheets[0]['cells'][$i][2];//å…¬å¸åç§°
+$department=$data->sheets[0]['cells'][$i][3];//ä¸€çº§éƒ¨é—¨
+$job_num=$data->sheets[0]['cells'][$i][4];//å·¥å·
+$name=$data->sheets[0]['cells'][$i][5];//å‘˜å·¥å§“å
+$work_allday=$data->sheets[0]['cells'][$i][6];//åº”å‡ºå‹¤
+$work_realday=$data->sheets[0]['cells'][$i][7];//å®å‡ºå‹¤
+$business_travel=$data->sheets[0]['cells'][$i][8];//å‡ºå·®
+$private_leave =$data->sheets[0]['cells'][$i][9];//äº‹å‡
+$sick_leave=$data->sheets[0]['cells'][$i][10];//ç—…å‡
+$marital_leave=$data->sheets[0]['cells'][$i][11];//å©šå‡
+$maternity_leave=$data->sheets[0]['cells'][$i][12];//äº§å‡
+$maternity_leave_company=$data->sheets[0]['cells'][$i][13];//é™ªäº§å‡
+$jbereavement_leave=$data->sheets[0]['cells'][$i][14];//ä¸§å‡
+$annual_leave=$data->sheets[0]['cells'][$i][15];//å¹´ä¼‘å‡
+$statutory_holidays=$data->sheets[0]['cells'][$i][16];//æ³•å®šèŠ‚å‡æ—¥
+$statutory_holiday_overtime=$data->sheets[0]['cells'][$i][17];//æ³•å®šèŠ‚å‡æ—¥åŠ ç­
+$weekend_overtime=$data->sheets[0]['cells'][$i][18];//å‘¨æœ«åŠ ç­
+$working_overtime=$data->sheets[0]['cells'][$i][19];//å·¥ä½œæ—¥åŠ ç­
+$be_on_duty=$data->sheets[0]['cells'][$i][20];//å€¼ç­
+$neglect_work=$data->sheets[0]['cells'][$i][21];//æ—·å·¥
+$wage=$data->sheets[0]['cells'][$i][22];//å·¥èµ„æ ‡å‡†
+$attendance_standards=$data->sheets[0]['cells'][$i][23];//å‡ºå‹¤å·¥èµ„
+$overtime_wages=$data->sheets[0]['cells'][$i][24];//åŠ ç­å·¥èµ„
+$meal_supplement=$data->sheets[0]['cells'][$i][25];//é¤è´´
+$bonus=$data->sheets[0]['cells'][$i][26];//å¥–é‡‘
+$commission=$data->sheets[0]['cells'][$i][27];//ææˆ
+$additional=$data->sheets[0]['cells'][$i][28];//æ­£è¡¥é¡¹
+$negative_buckle=$data->sheets[0]['cells'][$i][29];//è´Ÿæ‰£é¡¹
+$should_pay=$data->sheets[0]['cells'][$i][30];//åº”å‘å·¥èµ„
+$social_security_withholding=$data->sheets[0]['cells'][$i][31];//ç¤¾ä¿ä»£æ‰£
+$fund=$data->sheets[0]['cells'][$i][32];//å…¬ç§¯é‡‘ä»£æ‰£
+$salary_payable=$data->sheets[0]['cells'][$i][33];//åº”ä»˜å·¥èµ„
+$individual_income_tax=$data->sheets[0]['cells'][$i][34];//ä¸ªäººæ‰€å¾—ç¨
+$real_wages=$data->sheets[0]['cells'][$i][35];//å®å‘å·¥èµ„
+$secrecy_salary=$data->sheets[0]['cells'][$i][36];//ä¿å¯†å·¥èµ„
+$provident_fund_subsidies=$data->sheets[0]['cells'][$i][37];//å…¬ç§¯é‡‘è¡¥è´´
+$clock_real_hair=$data->sheets[0]['cells'][$i][38];//æ‰“å¡å®å‘
 $rs=explode("@",$list_email);
 $user_name = $rs['0'];
 $body = '
@@ -171,43 +171,43 @@ $body = '
 <body bgcolor="#FFFFFF" >
 <table width=100% border="2" cellpadding="3" cellspacing="0" bordercolor="#808080"> 
 <tr bgcolor="#84A9E1"> 
-<td align="center">¹«Ë¾Ãû³Æ</td> 
-<td align="center">Ò»¼¶²¿ÃÅ</td> 
-<td align="center">¹¤ºÅ</td> 
-<td align="center">Ô±¹¤ĞÕÃû</td> 
-<td align="center">Ó¦³öÇÚ</td> 
-<td align="center">Êµ³öÇÚ</td> 
-<td align="center">³ö²î</td> 
-<td align="center">ÊÂ¼Ù</td> 
-<td align="center">²¡¼Ù</td> 
-<td align="center">»é¼Ù</td> 
-<td align="center">²ú¼Ù</td> 
-<td align="center">Åã²ú¼Ù</td> 
-<td align="center">É¥¼Ù</td> 
-<td align="center">ÄêĞİ¼Ù</td> 
-<td align="center">·¨¶¨½Ú¼ÙÈÕ</td> 
-<td align="center">·¨¶¨½Ú¼ÙÈÕ¼Ó°à</td> 
-<td align="center">ÖÜÄ©¼Ó°à</td> 
-<td align="center">¹¤×÷ÈÕ¼Ó°à</td> 
-<td align="center">Öµ°à</td> 
-<td align="center">¿õ¹¤</td> 
-<td align="center">¹¤×Ê±ê×¼</td>
-<td align="center">³öÇÚ¹¤×Ê</td> 
-<td align="center">¼Ó°à¹¤×Ê</td> 
-<td align="center">²ÍÌù</td> 
-<td align="center">½±½ğ</td> 
-<td align="center">Ìá³É</td> 
-<td align="center">Õı²¹Ïî</td> 
-<td align="center">¸º¿ÛÏî</td> 
-<td align="center">Ó¦·¢¹¤×Ê</td> 
-<td align="center">Éç±£´ú¿Û</td> 
-<td align="center">¹«»ı½ğ´ú¿Û</td> 
-<td align="center">Ó¦¸¶¹¤×Ê</td> 
-<td align="center">¸öÈËËùµÃË°</td> 
-<td align="center">Êµ·¢¹¤×Ê</td> 
-<td align="center">±£ÃÜ¹¤×Ê</td> 
-<td align="center">¹«»ı½ğ²¹Ìù</td> 
-<td align="center">´ò¿¨Êµ·¢</td>  
+<td align="center">å…¬å¸åç§°</td> 
+<td align="center">ä¸€çº§éƒ¨é—¨</td> 
+<td align="center">å·¥å·</td> 
+<td align="center">å‘˜å·¥å§“å</td> 
+<td align="center">åº”å‡ºå‹¤</td> 
+<td align="center">å®å‡ºå‹¤</td> 
+<td align="center">å‡ºå·®</td> 
+<td align="center">äº‹å‡</td> 
+<td align="center">ç—…å‡</td> 
+<td align="center">å©šå‡</td> 
+<td align="center">äº§å‡</td> 
+<td align="center">é™ªäº§å‡</td> 
+<td align="center">ä¸§å‡</td> 
+<td align="center">å¹´ä¼‘å‡</td> 
+<td align="center">æ³•å®šèŠ‚å‡æ—¥</td> 
+<td align="center">æ³•å®šèŠ‚å‡æ—¥åŠ ç­</td> 
+<td align="center">å‘¨æœ«åŠ ç­</td> 
+<td align="center">å·¥ä½œæ—¥åŠ ç­</td> 
+<td align="center">å€¼ç­</td> 
+<td align="center">æ—·å·¥</td> 
+<td align="center">å·¥èµ„æ ‡å‡†</td>
+<td align="center">å‡ºå‹¤å·¥èµ„</td> 
+<td align="center">åŠ ç­å·¥èµ„</td> 
+<td align="center">é¤è´´</td> 
+<td align="center">å¥–é‡‘</td> 
+<td align="center">ææˆ</td> 
+<td align="center">æ­£è¡¥é¡¹</td> 
+<td align="center">è´Ÿæ‰£é¡¹</td> 
+<td align="center">åº”å‘å·¥èµ„</td> 
+<td align="center">ç¤¾ä¿ä»£æ‰£</td> 
+<td align="center">å…¬ç§¯é‡‘ä»£æ‰£</td> 
+<td align="center">åº”ä»˜å·¥èµ„</td> 
+<td align="center">ä¸ªäººæ‰€å¾—ç¨</td> 
+<td align="center">å®å‘å·¥èµ„</td> 
+<td align="center">ä¿å¯†å·¥èµ„</td> 
+<td align="center">å…¬ç§¯é‡‘è¡¥è´´</td> 
+<td align="center">æ‰“å¡å®å‘</td>  
 </tr>
 <td align="center">'.$company_name.'</td> 
 <td align="center">'.$department.'</td> 
@@ -250,13 +250,13 @@ $body = '
 </body>
 </html>
 		';
-smtp_mail($list_email, 'ÈÚ¶¼¿Æ¼¼¹¤×Êµ¥', $body, 'www.erongdu.com', $user_name);
+smtp_mail($list_email, 'èéƒ½ç§‘æŠ€å·¥èµ„å•', $body, 'www.erongdu.com', $user_name);
 redirect("?action=$i"); 
 }
-echo "<div class='waiting'>ÕıÔÚ·¢ËÍÓÊ¼ş,ÇëÉÔµÈ......</div>";
+echo "<div class='waiting'>æ­£åœ¨å‘é€é‚®ä»¶,è¯·ç¨ç­‰......</div>";
 }else {
 if($i>=1){
- echo "<div class='sucess'>{$i}·âÓÊ¼şÒÑ¾­È«²¿·¢ËÍÍê±Ï</div>";
+ echo "<div class='sucess'>{$i}å°é‚®ä»¶å·²ç»å…¨éƒ¨å‘é€å®Œæ¯•</div>";
  }
  exit;
   } 
